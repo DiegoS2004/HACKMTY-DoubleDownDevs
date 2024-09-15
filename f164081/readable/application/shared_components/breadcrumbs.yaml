@@ -1,0 +1,125 @@
+---
+- # ====== Breadcrumb: Breadcrumb ==============================
+  id: 38695510882270797800
+  identification: 
+    name: Breadcrumb
+
+  entries: 
+  - # ====== Entry: Home =========================================
+    id: 38695511035629797800
+    identification: 
+      name: Home
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Home
+
+  - # ====== Entry: Administration ===============================
+    id: 38696594591367798839
+    identification: 
+      name: Administration
+      page-number: 10000
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10000:&APP_SESSION.::&DEBUG.:::'
+        page: 10000 # Administration
+
+  - # ====== Entry: Profile ======================================
+    id: 38727642194840944499
+    identification: 
+      name: Profile
+      page-number: 18
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:18:&APP_SESSION.::&DEBUG.:::'
+        page: 18 # Profile
+
+  - # ====== Entry: Event Report =================================
+    id: 38744568672073415851
+    identification: 
+      name: Event Report
+      page-number: 30
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:30:&APP_SESSION.::&DEBUG.:::'
+        page: 30 # Event Report
+
+  - # ====== Entry: Calendar =====================================
+    id: 38745482090499455891
+    identification: 
+      name: Calendar
+      page-number: 4
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:::'
+        page: 4 # Calendar
+
+  - # ====== Entry: Event Edit ===================================
+    id: 38819454534418519263
+    identification: 
+      name: Event Edit
+      page-number: 32
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:32:&APP_SESSION.::&DEBUG.:::'
+        page: 32 # Event Edit
+
+  - # ====== Entry: Calendario anual =============================
+    id: 38832930791614614610
+    identification: 
+      name: Calendario anual
+      page-number: 44
+
+    execution: 
+      sequence: 10
+
+    appearance: 
+      parent-entry: Home # 38695511035629797800
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:44:&APP_SESSION.::&DEBUG.:::'
+        page: 44 # Calendario anual
+
+  - # ====== Entry: Chart calendar ===============================
+    id: 38882017778592198533
+    identification: 
+      name: Chart calendar
+      page-number: 45
+
+    execution: 
+      sequence: 10
+
+    appearance: 
+      parent-entry: Home # 38695511035629797800
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:45:&APP_SESSION.::&DEBUG.:::'
+        page: 45 # Chart calendar
+

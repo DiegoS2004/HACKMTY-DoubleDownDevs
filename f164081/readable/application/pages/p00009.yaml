@@ -1,0 +1,210 @@
+---
+# ====== Page: Task Selector =================================
+id: 9
+identification: 
+  name: Task Selector
+  alias: BAD-TASK-SELECTOR
+  title: Task Selector
+
+appearance: 
+  page-mode: Normal
+  page-template: Standard no nav bar
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .apex-item-checkbox input+label, .apex-item-radio input+label, .apex-item-single-checkbox input+label, label.u-checkbox, label.u-radio{
+        font-size: 45px;
+    }
+    .apex-item-option{
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+page-items: 
+- # ====== Page Item: P9_NEW ===================================
+  id: 38722736568273797806
+  identification: 
+    name: P9_NEW
+    type: Checkbox Group
+
+  label: 
+    label: Pick 1 or more
+    alignment: Left
+
+  settings: 
+    number-of-columns: 1
+
+  multiple-values: 
+    type: Delimited List
+    separator: ':'
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: 4
+    new-column: true
+    column-span: 4
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Social media;0,Eat less junk;1,Game less;2,Stop procrastination;3,Stop sleeping late;4'
+    display-extra-values: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: Next ========================================
+  id: 38750649046559259901
+  identification: 
+    button-name: Next
+    label: Next
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: 4
+    new-column: true
+    column-span: 3
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--large
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+    database-action: SQL INSERT action
+
+dynamic-actions: 
+- # ====== Dynamic Action: Insert ==============================
+  id: 38878818626807413902
+  identification: 
+    name: Insert
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: Next # 38750649046559259901
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 38878818743191413903
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        DECLARE
+          v_checked_values VARCHAR2(4000);
+          v_value VARCHAR2(100);
+          v_max_index NUMBER;
+        BEGIN
+          v_checked_values := :P9_NEW; -- Replace 'P100_CHECKBOX_GROUP' with your item name
+        
+          -- Obtener la cantidad máxima de iteraciones
+          v_max_index := LENGTH(REGEXP_SUBSTR(v_checked_values, '[^ ]+', 1, 1));
+        
+          FOR i IN 1..v_max_index
+          LOOP
+            v_value := REGEXP_SUBSTR(v_checked_values, '[^ ]+', 1, i);
+            -- Insert the value into your table
+            INSERT INTO habits (id, habit_type)
+            VALUES (:id, v_value); -- Replace 'P100_PRIMARY_KEY' with your primary key item
+          END LOOP;
+        END;
+        
+
+    execution: 
+      sequence: 10
+      event: Insert # 38878818626807413902
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+branches: 
+- # ====== Branch: Go To Page 34 ===============================
+  id: 38750653165317259942
+  identification: 
+    name: Go To Page 34
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:34:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 34 # Task selector
+
+  server-side-condition: 
+    when-button-pressed: Next # 38750649046559259901
+

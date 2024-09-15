@@ -1,0 +1,153 @@
+---
+- # ====== Static Application File: app_icon.png ===============
+  id: 38705095267250985832
+  identification: 
+    file-name: app_icon.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app-164081-logo.png ========
+  id: 38706030911094334428
+  identification: 
+    file-name: app-164081-logo.png
+
+  attributes: 
+    mime-type: image/png
+
+- # ====== Static Application File: icons/app-icon-32.png ======
+  id: 38706227958066342738
+  identification: 
+    file-name: icons/app-icon-32.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-144-rounded.p
+  id: 38706228537092342784
+  identification: 
+    file-name: icons/app-icon-144-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-192.png =====
+  id: 38706229141721342845
+  identification: 
+    file-name: icons/app-icon-192.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-512.png =====
+  id: 38706230321395342975
+  identification: 
+    file-name: icons/app-icon-512.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-256-rounded.p
+  id: 38706418691072041110
+  identification: 
+    file-name: icons/app-icon-256-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: infernoven.jpeg ============
+  id: 38803095364844890996
+  identification: 
+    file-name: infernoven.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: flarezen.jpeg ==============
+  id: 38803111185405892421
+  identification: 
+    file-name: flarezen.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: aquat.jpeg =================
+  id: 38803122000918893200
+  identification: 
+    file-name: aquat.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: arborlux.jpeg ==============
+  id: 38803135762254893851
+  identification: 
+    file-name: arborlux.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: foliara.jpeg ===============
+  id: 38803147086157894583
+  identification: 
+    file-name: foliara.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: pyroki.jpeg ================
+  id: 38803475347745586202
+  identification: 
+    file-name: pyroki.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: maridrak.jpeg ==============
+  id: 38803532688133594059
+  identification: 
+    file-name: maridrak.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: springlet.jpeg =============
+  id: 38803533752528594841
+  identification: 
+    file-name: springlet.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: tidalon.jpeg ===============
+  id: 38803534203328595433
+  identification: 
+    file-name: tidalon.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: mensaje.png ================
+  id: 38920685221629223827
+  identification: 
+    file-name: mensaje.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+

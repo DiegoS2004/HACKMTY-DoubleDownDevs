@@ -1,0 +1,310 @@
+---
+# ====== Page: habitant_selection ============================
+id: 42
+identification: 
+  name: habitant_selection
+  alias: HABITANT-SELECTION
+  title: habitant_selection
+
+appearance: 
+  page-mode: Normal
+  page-template: Standard no nav bar
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: habitant_selection ==========================
+  id: 38750651365990259924
+  identification: 
+    name: habitant_selection
+    title: Select your habitant!
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: 4
+    new-column: true
+    column-span: 5
+
+  appearance: 
+    template: Carousel Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--carouselSlide
+    - t-Region--hiddenOverflow
+    - margin-top-lg
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: 0 ===========================================
+  id: 38750651411414259925
+  identification: 
+    name: 0
+    title: Pyroki
+    type: Static Content
+
+  source: 
+    html-code: <img src="#APP_FILES#pyroki.jpeg"/>
+
+  layout: 
+    sequence: 10
+    parent-region: habitant_selection # 38750651365990259924
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: 1 ===========================================
+  id: 38750651526709259926
+  identification: 
+    name: 1
+    title: Aquat
+    type: Static Content
+
+  source: 
+    html-code: <img src="#APP_FILES#aquat.jpeg"/>
+
+  layout: 
+    sequence: 20
+    parent-region: habitant_selection # 38750651365990259924
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: 2 ===========================================
+  id: 38750651652797259927
+  identification: 
+    name: 2
+    title: Springlet
+    type: Static Content
+
+  source: 
+    html-code: <img src="#APP_FILES#springlet.jpeg"/>
+
+  layout: 
+    sequence: 30
+    parent-region: habitant_selection # 38750651365990259924
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+buttons: 
+- # ====== Button: select ======================================
+  id: 38750651756550259928
+  identification: 
+    button-name: select
+    label: Select
+
+  layout: 
+    sequence: 10
+    region: 2 # 38750651652797259927
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:41:&SESSION.::&DEBUG.:::'
+      page: 41 # Profile customization
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: select_1 ====================================
+  id: 38750651814729259929
+  identification: 
+    button-name: select_1
+    label: Select
+
+  layout: 
+    sequence: 10
+    region: 1 # 38750651526709259926
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:1:&SESSION.::&DEBUG.:::'
+      page: 1 # Home
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: select_1_1 ==================================
+  id: 38750651916801259930
+  identification: 
+    button-name: select_1_1
+    label: Select
+
+  layout: 
+    sequence: 10
+    region: 0 # 38750651411414259925
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:1:&SESSION.::&DEBUG.:::'
+      page: 1 # Home
+
+    warn-on-unsaved-changes: Do Not Check
+

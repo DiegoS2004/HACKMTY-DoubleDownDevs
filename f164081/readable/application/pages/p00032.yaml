@@ -1,0 +1,809 @@
+---
+# ====== Page: Event Edit ====================================
+id: 32
+identification: 
+  name: Event Edit
+  alias: EVENT-EDIT
+  title: Event Edit
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Drawer
+  template-options: 
+  - '#DEFAULT#'
+  - js-dialog-class-t-Drawer--pullOutEnd
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 38819454022013519262
+  identification: 
+    name: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 38695510882270797800
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Event Edit ==================================
+  id: 38819455039340519415
+  identification: 
+    name: Event Edit
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: EVENT
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |
+      SELECT ID, EVENT, START_DATE, END_DATE
+      FROM EVENT
+      WHERE EVENT = :P32_EVENT;
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      allowed-row-operations-column: EVENT
+      lost-update-type: Row Values
+
+- # ====== Region: Buttons =====================================
+  id: 38819458115702519417
+  identification: 
+    name: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: Text (escape special characters)
+      show-line-breaks: true
+
+page-items: 
+- # ====== Page Item: P32_EVENT ================================
+  id: 38723184903570823034
+  identification: 
+    name: P32_EVENT
+    type: Display Only
+
+  label: 
+    label: Event
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Event Edit # 38819455039340519415
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Event Edit # 38819455039340519415
+    column: EVENT
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: true
+
+  default: 
+    type: SQL Query (return single value)
+    sql-query-(return-single-value): SELECT EVENT FROM EVENT
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_ID ===================================
+  id: 38819455354586519415
+  identification: 
+    name: P32_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Event Edit # 38819455039340519415
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Event Edit # 38819455039340519415
+    column: ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_START_DATE ===========================
+  id: 38819456161564519416
+  identification: 
+    name: P32_START_DATE
+    type: Date Picker
+
+  label: 
+    label: Start Date
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 40
+    region: Event Edit # 38819455039340519415
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Event Edit # 38819455039340519415
+    column: START_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: SQL Query (return single value)
+    sql-query-(return-single-value): SELECT START_DATE FROM EVENT
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P32_END_DATE =============================
+  id: 38819456543234519416
+  identification: 
+    name: P32_END_DATE
+    type: Date Picker
+
+  label: 
+    label: End Date
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 50
+    region: Event Edit # 38819455039340519415
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Event Edit # 38819455039340519415
+    column: END_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: SQL Query (return single value)
+    sql-query-(return-single-value): SELECT END_DATE FROM EVENT
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: update ======================================
+  id: 38750652408329259935
+  identification: 
+    button-name: update
+    label: Update
+
+  layout: 
+    sequence: 10
+    region: Buttons # 38819458115702519417
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+    database-action: SQL UPDATE action
+
+- # ====== Button: CANCEL ======================================
+  id: 38819458557906519418
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Buttons # 38819458115702519417
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+    database-action: SQL DELETE action
+
+- # ====== Button: DELETE ======================================
+  id: 38819459904996519419
+  identification: 
+    button-name: DELETE
+    label: Delete
+
+  layout: 
+    sequence: 50
+    region: Buttons # 38819458115702519417
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: SAVE ========================================
+  id: 38819460321222519419
+  identification: 
+    button-name: SAVE
+    label: Apply Changes
+
+  layout: 
+    sequence: 30
+    region: Buttons # 38819458115702519417
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P32_ID
+
+- # ====== Button: CREATE ======================================
+  id: 38819460747093519420
+  identification: 
+    button-name: CREATE
+    label: Create
+
+  layout: 
+    sequence: 40
+    region: Buttons # 38819458115702519417
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P32_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: Refresh =============================
+  id: 38723185187800823036
+  identification: 
+    name: Refresh
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: DELETE # 38819459904996519419
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 38723185248940823037
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Event Edit # 38819455039340519415
+
+    execution: 
+      sequence: 10
+      event: Refresh # 38723185187800823036
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: REFRESH =============================
+  id: 38723185753668823042
+  identification: 
+    name: REFRESH
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: update # 38750652408329259935
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 38723185832059823043
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Event Source
+
+    execution: 
+      sequence: 10
+      event: REFRESH # 38723185753668823042
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 38819458698934519418
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCEL # 38819458557906519418
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 38819459434391519419
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 38819458698934519418
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: EVENT EDIT =================================
+  id: 38723184888752823033
+  identification: 
+    name: EVENT EDIT
+    type: Execute Code
+    execution-chain: None
+    editable-region: Event Edit # 38819455039340519415
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          -- Primero verifica si existe un registro con el evento dado
+          DELETE FROM EVENT
+          WHERE EVENT = :P32_EVENT;
+          
+          -- Confirmación de que se eliminó el registro
+          APEX_DEBUG.MESSAGE('Registro eliminado: ' || :P32_EVENT);
+      
+          -- Puedes agregar un mensaje de éxito en la interfaz de usuario
+          APEX_UTIL.SET_SESSION_STATE('P32_SUCCESS_MSG', 'El evento ha sido eliminado con éxito.');
+      
+      EXCEPTION
+          WHEN NO_DATA_FOUND THEN
+              -- Manejo del caso cuando no se encuentra ningún registro para eliminar
+              APEX_DEBUG.MESSAGE('No se encontró ningún evento con ese nombre para eliminar.');
+              APEX_UTIL.SET_SESSION_STATE('P32_ERROR_MSG', 'No se encontró ningún evento con ese nombre.');
+      END;
+      
+
+  execution: 
+    sequence: 60
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: DELETE # 38819459904996519419
+    execution-scope: For Created and Modified Rows
+
+- # ====== Process: BUTTON DELETE ==============================
+  id: 38723185061847823035
+  identification: 
+    name: BUTTON DELETE
+    type: Execute Code
+    execution-chain: None
+    editable-region: Event Edit # 38819455039340519415
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          DELETE FROM EVENT
+          WHERE EVENT = :P32_EVENT;
+      
+          -- Optionally, set a success message
+          APEX_UTIL.SET_SESSION_STATE('P32_SUCCESS_MSG', 'The event has been deleted successfully.');
+      
+          -- Optionally, redirect to another page or refresh
+          -- APEX_UTIL.REDIRECT_URL('f?p=&APP_ID.:1:&APP_SESSION.');
+      EXCEPTION
+          WHEN OTHERS THEN
+              -- Handle errors and set an error message
+              APEX_UTIL.SET_SESSION_STATE('P32_ERROR_MSG', 'An error occurred: ' || SQLERRM);
+      END;
+      
+
+  execution: 
+    sequence: 70
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: DELETE # 38819459904996519419
+    execution-scope: For Created and Modified Rows
+    type: Rows returned
+    sql-query: |
+      BEGIN
+          DELETE FROM EVENT
+          WHERE EVENT = :P32_EVENT;
+      
+          -- Optionally, set a success message
+          APEX_UTIL.SET_SESSION_STATE('P32_SUCCESS_MSG', 'The event has been deleted successfully.');
+      
+          -- Optionally, redirect to another page or refresh
+          -- APEX_UTIL.REDIRECT_URL('f?p=&APP_ID.:1:&APP_SESSION.');
+      EXCEPTION
+          WHEN OTHERS THEN
+              -- Handle errors and set an error message
+              APEX_UTIL.SET_SESSION_STATE('P32_ERROR_MSG', 'An error occurred: ' || SQLERRM);
+      END;
+      
+    execute-condition: For Each Row
+
+- # ====== Process: Initialize form Event Edit =================
+  id: 38819461133944519420
+  identification: 
+    name: Initialize form Event Edit
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Event Edit # 38819455039340519415
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    when-button-pressed: CREATE # 38819460747093519420
+    type: Rows returned
+    sql-query: |
+      SELECT 
+          ID, 
+          EVENT, 
+          START_DATE, 
+          END_DATE 
+      FROM 
+          EVENT 
+      
+
+- # ====== Process: Process form Event Edit ====================
+  id: 38819461596002519420
+  identification: 
+    name: Process form Event Edit
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Event Edit # 38819455039340519415
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Close Dialog ===============================
+  id: 38819461938230519420
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+

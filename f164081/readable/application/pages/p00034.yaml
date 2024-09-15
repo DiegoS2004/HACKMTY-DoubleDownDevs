@@ -1,0 +1,141 @@
+---
+# ====== Page: Task selector =================================
+id: 34
+identification: 
+  name: Task selector
+  alias: TASK-SELECTOR
+  title: Task selector
+
+appearance: 
+  page-mode: Normal
+  page-template: Standard no nav bar
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .apex-item-checkbox input+label, .apex-item-radio input+label, .apex-item-single-checkbox input+label, label.u-checkbox, label.u-radio{
+        font-size: 45px;
+    }
+    .apex-item-option{
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+page-items: 
+- # ====== Page Item: P34_NEW ==================================
+  id: 38750649120482259902
+  identification: 
+    name: P34_NEW
+    type: Checkbox Group
+
+  label: 
+    label: Pick 1 or more
+    alignment: Left
+
+  settings: 
+    number-of-columns: 1
+
+  multiple-values: 
+    type: Delimited List
+    separator: ':'
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: 4
+    new-column: true
+    column-span: 4
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Eat healthier;20,Start exercising;21,Read more;22,Meditate;23,Drink more water;24'
+    display-extra-values: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: Submit ======================================
+  id: 38750649205261259903
+  identification: 
+    button-name: Submit
+    label: Submit
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: 4
+    new-column: true
+    column-span: 3
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--large
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:42:&SESSION.::&DEBUG.:::'
+      page: 42 # habitant_selection
+
+    warn-on-unsaved-changes: Do Not Check
+
